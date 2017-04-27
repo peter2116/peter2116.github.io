@@ -5,8 +5,8 @@
     <description>欢迎来到FANER ARTIST个人站</description>
     <link>http://peter2116@github.io/</link>
     <atom:link href="http://peter2116@github.io/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Tue, 14 Mar 2017 12:52:32 +0800</pubDate>
-    <lastBuildDate>Tue, 14 Mar 2017 12:52:32 +0800</lastBuildDate>
+    <pubDate>Thu, 27 Apr 2017 15:32:08 +0800</pubDate>
+    <lastBuildDate>Thu, 27 Apr 2017 15:32:08 +0800</lastBuildDate>
     <generator>Jekyll v3.1.1</generator>
     
       <item>
@@ -75,7 +75,7 @@ public void flushBuffer() throws IOException {
 
 &lt;p&gt;然后通过request和response初始它们的外观类对象，并把它们的外观类对象传给Service()方法即可：&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;	RequestFacade requestFacade = new RequestFacade(request);
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;RequestFacade requestFacade = new RequestFacade(request);
 	ResponseFacade responseFacade = new ResponseFacade(response);
 	
 	try {
@@ -90,7 +90,7 @@ public void flushBuffer() throws IOException {
 &lt;p&gt;RequestFacade 外观类包含类request，并且和request类都继承了ServletRequest接口，所以servlet程序员就可以通过外观类来调用ServletRequest接口的所有方法，同时有效屏蔽了request类自己的公共方法。ResponseFacade具有同样的功能。&lt;/p&gt;
 
 &lt;p&gt;&lt;br /&gt;
-转载请注明：&lt;a href=&quot;http://peter211.github.io&quot;&gt;陈维家的博客&lt;/a&gt; » &lt;a href=&quot;http://peter211.github.io/2016/07/Facade/&quot;&gt;点击阅读原文&lt;/a&gt;&lt;/p&gt;
+转载请注明：&lt;a href=&quot;https://peter2116.github.io&quot;&gt;FANER ARTIST的博客&lt;/a&gt; » &lt;a href=&quot;https://peter2116.github.io/2016/07/Facade/&quot;&gt;点击阅读原文&lt;/a&gt;&lt;/p&gt;
 </description>
         <pubDate>Wed, 13 Jul 2016 00:00:00 +0800</pubDate>
         <link>http://peter2116@github.io/2016/07/Facade/</link>
@@ -112,7 +112,7 @@ public void flushBuffer() throws IOException {
 &lt;p&gt;最近想要学习LINUX操作系统，还有写一个简单的应用服务器，暂且就从这两件事开始克服处女症吧。
 &lt;br /&gt;&lt;/p&gt;
 
-&lt;p&gt;转载请注明：&lt;a href=&quot;http://peter211.github.io&quot;&gt;陈维家的博客&lt;/a&gt; » &lt;a href=&quot;http://peter211.github.io/2016/07/lzayThinking/&quot;&gt;点击阅读原文&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;转载请注明：&lt;a href=&quot;https://peter2116.github.io&quot;&gt;FANER ARTIST的博客&lt;/a&gt; » &lt;a href=&quot;https://peter2116.github.io/2016/07/lzayThinking/&quot;&gt;点击阅读原文&lt;/a&gt;&lt;/p&gt;
 
 </description>
         <pubDate>Tue, 07 Jun 2016 19:15:06 +0800</pubDate>
@@ -125,7 +125,7 @@ public void flushBuffer() throws IOException {
       </item>
     
       <item>
-        <title>makdown is so interesting</title>
+        <title>makdown is interesting</title>
         <description>&lt;h1 id=&quot;section&quot;&gt;一级标题&lt;/h1&gt;
 
 &lt;h2 id=&quot;section-1&quot;&gt;二级标题&lt;/h2&gt;
@@ -177,11 +177,33 @@ System.out.println(&quot;Hello MarkDown&quot;);
 System.out.println(&quot;Hello MarkDown&quot;);
 System.out.println(&quot;Hello MarkDown&quot;);
 System.out.println(&quot;Hello MarkDown&quot;);
-} ####反斜杠插入特殊字符 \* \# &amp;lt;br&amp;gt;
+} #### 反斜杠插入特殊字符 \* \# &amp;lt;br&amp;gt;
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 
-&lt;p&gt;转载请注明：&lt;a href=&quot;http://peter211.github.io&quot;&gt;陈维家的博客&lt;/a&gt; » &lt;a href=&quot;http://peter211.github.io/2016/06/MarkDown/&quot;&gt;点击阅读原文&lt;/a&gt;&lt;/p&gt;
+&lt;h4 id=&quot;section-7&quot;&gt;另一代码区测试&lt;/h4&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;try {
+            int a = rckMapper.SumDayRckStock(paraMap);  //汇总日进货成本和数量
+            int b = rckMapper.SumDayRckSal(paraMap);  //汇总日销售成本
+            int c = rckMapper.SumDayRckChange(paraMap);  //汇总日损益成本
+            int d = rckMapper.calDayRckCstPrice(paraMap); //汇总日成本单价
+            int e = rckMapper.calDayRckMultiCstPrice(paraMap);  //汇总销售成本、调整成本、结存成本
+            int f = rckMapper.updStoCostprice(paraMap); //更新库存成本单价
+            
+        System.out.println(&quot;|&quot; + a + &quot;|&quot;
+                + b + &quot;|&quot;
+                + c + &quot;|&quot;
+                + d + &quot;|&quot;
+                + e + &quot;|&quot;
+                + f + &quot;|&quot;);
+    }
+    catch (Exception e) {
+        // TODO: handle exception
+    }
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;转载请注明：&lt;a href=&quot;https://peter2116.github.io&quot;&gt;FANER ARTIST的博客&lt;/a&gt; » &lt;a href=&quot;https://peter2116.github.io/2016/06/MarkDown/&quot;&gt;点击阅读原文&lt;/a&gt;&lt;/p&gt;
 
 </description>
         <pubDate>Thu, 02 Jun 2016 19:15:06 +0800</pubDate>
@@ -189,6 +211,81 @@ System.out.println(&quot;Hello MarkDown&quot;);
         <guid isPermaLink="true">http://peter2116@github.io/2016/06/MarkDown/</guid>
         
         <category>IT</category>
+        
+        
+      </item>
+    
+      <item>
+        <title>macOs mysql安装与卸载</title>
+        <description>&lt;h3 id=&quot;mysql&quot;&gt;安装MySql服务&lt;/h3&gt;
+
+&lt;h3 id=&quot;root-&quot;&gt;切换到root 用户&lt;/h3&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;sudo -i
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h3 id=&quot;usrlocal&quot;&gt;解压安装包并移动到指定了路径/usr/local&lt;/h3&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;tar -zxvf mysql-5.7.13-osx10.11-x86_64.tar  
+sudo mv mysql-5.7.13-osx10.11-x86_64 /usr/local/mysql  
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h3 id=&quot;section&quot;&gt;更改目录的用户和用户组&lt;/h3&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;cd /usr/local   
+sudo chown -R root:wheel mysql
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h3 id=&quot;binmysqld&quot;&gt;执行bin目录下的mysqld脚本完成初始化(创建默认配置文件、授权表等)&lt;/h3&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;cd /usr/local/mysql  
+sudo bin/mysqld --initialize --user=mysql   
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;执行完成之后会root用户随机分配一个密码,这个密码需要记录好，以备用来登录后修改root密码。&lt;br /&gt;
+一般会显示：2017-04-20T06:10:09.073666Z 1 [Note] A temporary password is generated for root@localhost: BxnS&amp;lt;&amp;gt;qpD8E4, BxnS&amp;lt;&amp;gt;qpD8E4这个就是root用户分配的随机密码&lt;br /&gt;
+如果之后找不到，尝试到mysql/data 路径下的XXX.err文件内找&lt;/p&gt;
+
+&lt;h3 id=&quot;section-1&quot;&gt;安装完成后常用的一些脚本&lt;/h3&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;cd /usr/local/mysql   
+启动        
+sudo support-files/mysql.server start     
+重启      
+sudo support-files/mysql.server restart      
+停止      
+sudo support-files/mysql.server stop      
+检查 MySQL 运行状态         
+sudo support-files/mysql.server status      
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h3 id=&quot;mysqlbinsupport-filespath&quot;&gt;为了方便可以将mysql的bin，和support-files添加到PATH&lt;/h3&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;export  PATH=$PATH:/usr/local/mysql/support-files
+export  PATH=$PATH:/usr/local/mysql/bin
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h3 id=&quot;mysql-1&quot;&gt;mysql卸载&lt;/h3&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;sudo rm /usr/local/mysql
+sudo rm -rf /usr/local/mysql*
+sudo rm -rf /Library/StartupItems/MySQLCOM
+sudo rm -rf /Library/PreferencePanes/My*
+vim /etc/hostconfig  (and removed the line MYSQLCOM=-YES-)
+rm -rf ~/Library/PreferencePanes/My*
+sudo rm -rf /Library/Receipts/mysql*
+sudo rm -rf /Library/Receipts/MySQL*
+sudo rm -rf /var/db/receipts/com.mysql.*
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+</description>
+        <pubDate>Sat, 02 Apr 2016 00:00:00 +0800</pubDate>
+        <link>http://peter2116@github.io/2016/04/MysqlServiceOnMac/</link>
+        <guid isPermaLink="true">http://peter2116@github.io/2016/04/MysqlServiceOnMac/</guid>
+        
+        <category>mysql</category>
         
         
       </item>
@@ -247,7 +344,7 @@ System.out.println(&quot;Hello MarkDown&quot;);
 
 &lt;p&gt;&lt;br /&gt;&lt;/p&gt;
 
-&lt;p&gt;转载请注明：&lt;a href=&quot;http://peter211.github.io&quot;&gt;陈维家的博客&lt;/a&gt; » &lt;a href=&quot;http://peter211.github.io/2016/07/Facade/&quot;&gt;点击阅读原文&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;转载请注明：&lt;a href=&quot;https://peter2116.github.io&quot;&gt;FANER ARTIST的博客&lt;/a&gt; » &lt;a href=&quot;https://peter2116.github.io/2016/04/ClassVersion/&quot;&gt;点击阅读原文&lt;/a&gt;&lt;/p&gt;
 
 </description>
         <pubDate>Sat, 02 Apr 2016 00:00:00 +0800</pubDate>
