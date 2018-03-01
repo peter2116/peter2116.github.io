@@ -6,17 +6,17 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-  <title>FANER ARTIST</title>
-  <meta name="description" content="欢迎来到FANER ARTIST个人站">
+  <title>排查java应用中的死循环</title>
+  <meta name="description" content="  web应用中出现deadloop问题会导致机器cpu飙升，下面是一个常规的排查思路">
   <meta name="author" content="leopardpan">
 
   <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="FANER ARTIST">
-  <meta name="twitter:description" content="欢迎来到FANER ARTIST个人站">
+  <meta name="twitter:title" content="排查java应用中的死循环">
+  <meta name="twitter:description" content="  web应用中出现deadloop问题会导致机器cpu飙升，下面是一个常规的排查思路">
   
   <meta property="og:type" content="article">
-  <meta property="og:title" content="FANER ARTIST">
-  <meta property="og:description" content="欢迎来到FANER ARTIST个人站">
+  <meta property="og:title" content="排查java应用中的死循环">
+  <meta property="og:description" content="  web应用中出现deadloop问题会导致机器cpu飙升，下面是一个常规的排查思路">
   
   <link rel="icon" type="image/png" href="/images/favicon.png" />
   <link href="/images/favicon.png" rel="shortcut icon" type="image/png">
@@ -24,7 +24,7 @@
   <link rel="stylesheet" href="/css/main.css">
   <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
 
-  <link rel="canonical" href="http://peter2116@github.io/404.html">
+  <link rel="canonical" href="http://peter2116@github.io/2018/03/deadloopcheck/">
   <link rel="alternate" type="application/rss+xml" title="FANER ARTIST" href="http://peter2116@github.io/feed.xml">
   
   <meta name="google-site-verification" content="1-1ZlHoRvM0T2FqPbW2S-qLgYXN6rsn52kErlMPd_gw" />
@@ -78,7 +78,7 @@
       </div>
     </span>
     
-    <header class="panel-cover " style="background-image: url('/images/background-cover.jpg')">
+    <header class="panel-cover panel-cover--collapsed" style="background-image: url('/images/background-cover.jpg')">
   <div class="panel-main">
 
     <div class="panel-main__inner panel-inverted">
@@ -146,23 +146,88 @@
 
     <div class="content-wrapper">
         <div class="content-wrapper__inner">
-            <!-- Page Header -->
-<header class="intro-header" style="background-image: url('/images/404-bg.jpg')">
-	<div class="container">
-		<div class="row">
-			<div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-				<div class="site-heading" id="tag-heading">
-					<h1>404</h1>
-					<span class="subheading">你来到了没有知识的荒原 :(</span>
-				</div>
-			</div>
-		</div>
-	</div>
-</header>
+            <article class="post-container post-container--single" itemscope itemtype="http://schema.org/BlogPosting">
+  <header class="post-header">
+    <h1 class="post-title">排查java应用中的死循环</h1>
+    <div class="post-meta">
+      <img src="/images/calendar.png" width="20px"/> 
+      <time datetime="2018-03-01 00:00:00 +0800" itemprop="datePublished" class="post-meta__date date">2018-03-01</time>  
+         
+      <span id="busuanzi_container_page_pv"> | 阅读：<span id="busuanzi_value_page_pv"></span>次</span>
+    </p>
+    </div>
+  </header>
 
-<script>
-	document.body.classList.add('page-fullscreen');
-</script>
+  <section class="post">
+    <blockquote>
+  <p>web应用中出现deadloop问题会导致机器cpu飙升，下面是一个常规的排查思路</p>
+</blockquote>
+
+<h3 id="pid">查找进程pid</h3>
+
+<p>利用<code class="highlighter-rouge">top</code> 或<code class="highlighter-rouge">ps -ef </code> 或<code class="highlighter-rouge">jps</code> 命令找到吃cpu的pid,我们利用<code class="highlighter-rouge">top</code> <br />
+<img src="https://raw.githubusercontent.com/peter2116/ImgRep/master/gitImgRep/1.png" alt="image" /></p>
+
+<p>可以看到pid为3688的进程导致cpu飙升</p>
+
+<h3 id="java">定位java线程</h3>
+<p>用<code class="highlighter-rouge">top -Hp 3688</code>定位到导致吃cpu的线程pid
+<img src="https://raw.githubusercontent.com/peter2116/ImgRep/master/gitImgRep/deadloop_3.png" alt="image" /><br />
+将<code class="highlighter-rouge">23694</code>转化为十六进制为<code class="highlighter-rouge">0x5c8e</code></p>
+
+<h3 id="jstack">jstack获取堆栈信息</h3>
+<p>用<code class="highlighter-rouge">jstack</code>命令打印出堆栈信息到文件</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>jstack 3688 &gt; 3688.log
+</code></pre>
+</div>
+
+<h3 id="section">定位代码</h3>
+<p>在<code class="highlighter-rouge">3688.log</code>中查找pid为<code class="highlighter-rouge">0x5c8e</code>的线程便可定位到相关代码<br />
+<img src="https://raw.githubusercontent.com/peter2116/ImgRep/master/gitImgRep/deadloop_2.png" alt="image" /></p>
+
+<p><br /></p>
+
+<p>转载请注明：<a href="https://peter2116.github.io">FANER ARTIST的博客</a> » <a href="https://peter2116.github.io/2016/04/ClassVersion/">点击阅读原文</a></p>
+
+
+
+  </section>
+</article>
+
+<section>
+       <ul class="pager">
+        
+        <li class="previous">
+            <a href="/2017/07/nfs/" data-toggle="tooltip" data-placement="top" title="nfs 共享文件与挂载">上一篇：  <span>nfs 共享文件与挂载</span>
+            </a>
+        </li>
+        
+        
+    </ul>
+</section>
+
+<section class="post-comments">
+
+  
+    <div class="ds-thread" data-thread-key="/2018/03/deadloopcheck/" data-title="排查java应用中的死循环" data-url="http://peter2116@github.io/2018/03/deadloopcheck/"></div>
+
+    <script type="text/javascript">
+        var duoshuoQuery = {short_name:"peter"};
+        (function() {
+            var ds = document.createElement('script');
+            ds.type = 'text/javascript';ds.async = true;
+            ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+            ds.charset = 'UTF-8';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ds);
+        })();
+    </script>
+  
+  
+  
+  
+</section>
+
 
             <section class="footer">
     <footer>

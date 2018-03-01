@@ -5,9 +5,52 @@
     <description>欢迎来到FANER ARTIST个人站</description>
     <link>http://peter2116@github.io/</link>
     <atom:link href="http://peter2116@github.io/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Fri, 14 Jul 2017 14:49:03 +0800</pubDate>
-    <lastBuildDate>Fri, 14 Jul 2017 14:49:03 +0800</lastBuildDate>
+    <pubDate>Thu, 01 Mar 2018 16:43:28 +0800</pubDate>
+    <lastBuildDate>Thu, 01 Mar 2018 16:43:28 +0800</lastBuildDate>
     <generator>Jekyll v3.1.1</generator>
+    
+      <item>
+        <title>排查java应用中的死循环</title>
+        <description>&lt;blockquote&gt;
+  &lt;p&gt;web应用中出现deadloop问题会导致机器cpu飙升，下面是一个常规的排查思路&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&quot;pid&quot;&gt;查找进程pid&lt;/h3&gt;
+
+&lt;p&gt;利用&lt;code class=&quot;highlighter-rouge&quot;&gt;top&lt;/code&gt; 或&lt;code class=&quot;highlighter-rouge&quot;&gt;ps -ef &lt;/code&gt; 或&lt;code class=&quot;highlighter-rouge&quot;&gt;jps&lt;/code&gt; 命令找到吃cpu的pid,我们利用&lt;code class=&quot;highlighter-rouge&quot;&gt;top&lt;/code&gt; &lt;br /&gt;
+&lt;img src=&quot;https://raw.githubusercontent.com/peter2116/ImgRep/master/gitImgRep/1.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;可以看到pid为3688的进程导致cpu飙升&lt;/p&gt;
+
+&lt;h3 id=&quot;java&quot;&gt;定位java线程&lt;/h3&gt;
+&lt;p&gt;用&lt;code class=&quot;highlighter-rouge&quot;&gt;top -Hp 3688&lt;/code&gt;定位到导致吃cpu的线程pid
+&lt;img src=&quot;https://raw.githubusercontent.com/peter2116/ImgRep/master/gitImgRep/deadloop_3.png&quot; alt=&quot;image&quot; /&gt;&lt;br /&gt;
+将&lt;code class=&quot;highlighter-rouge&quot;&gt;23694&lt;/code&gt;转化为十六进制为&lt;code class=&quot;highlighter-rouge&quot;&gt;0x5c8e&lt;/code&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;jstack&quot;&gt;jstack获取堆栈信息&lt;/h3&gt;
+&lt;p&gt;用&lt;code class=&quot;highlighter-rouge&quot;&gt;jstack&lt;/code&gt;命令打印出堆栈信息到文件&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;jstack 3688 &amp;gt; 3688.log
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h3 id=&quot;section&quot;&gt;定位代码&lt;/h3&gt;
+&lt;p&gt;在&lt;code class=&quot;highlighter-rouge&quot;&gt;3688.log&lt;/code&gt;中查找pid为&lt;code class=&quot;highlighter-rouge&quot;&gt;0x5c8e&lt;/code&gt;的线程便可定位到相关代码&lt;br /&gt;
+&lt;img src=&quot;https://raw.githubusercontent.com/peter2116/ImgRep/master/gitImgRep/deadloop_2.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;转载请注明：&lt;a href=&quot;https://peter2116.github.io&quot;&gt;FANER ARTIST的博客&lt;/a&gt; » &lt;a href=&quot;https://peter2116.github.io/2016/04/ClassVersion/&quot;&gt;点击阅读原文&lt;/a&gt;&lt;/p&gt;
+
+</description>
+        <pubDate>Thu, 01 Mar 2018 00:00:00 +0800</pubDate>
+        <link>http://peter2116@github.io/2018/03/deadloopcheck/</link>
+        <guid isPermaLink="true">http://peter2116@github.io/2018/03/deadloopcheck/</guid>
+        
+        <category>java</category>
+        
+        
+      </item>
     
       <item>
         <title>nfs 共享文件与挂载</title>

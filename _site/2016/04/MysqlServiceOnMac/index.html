@@ -6,17 +6,17 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-  <title>FANER ARTIST</title>
-  <meta name="description" content="欢迎来到FANER ARTIST个人站">
+  <title>macOs mysql安装与卸载</title>
+  <meta name="description" content="安装MySql服务">
   <meta name="author" content="leopardpan">
 
   <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="FANER ARTIST">
-  <meta name="twitter:description" content="欢迎来到FANER ARTIST个人站">
+  <meta name="twitter:title" content="macOs mysql安装与卸载">
+  <meta name="twitter:description" content="安装MySql服务">
   
   <meta property="og:type" content="article">
-  <meta property="og:title" content="FANER ARTIST">
-  <meta property="og:description" content="欢迎来到FANER ARTIST个人站">
+  <meta property="og:title" content="macOs mysql安装与卸载">
+  <meta property="og:description" content="安装MySql服务">
   
   <link rel="icon" type="image/png" href="/images/favicon.png" />
   <link href="/images/favicon.png" rel="shortcut icon" type="image/png">
@@ -24,7 +24,7 @@
   <link rel="stylesheet" href="/css/main.css">
   <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
 
-  <link rel="canonical" href="http://peter2116@github.io/404.html">
+  <link rel="canonical" href="http://peter2116@github.io/2016/04/MysqlServiceOnMac/">
   <link rel="alternate" type="application/rss+xml" title="FANER ARTIST" href="http://peter2116@github.io/feed.xml">
   
   <meta name="google-site-verification" content="1-1ZlHoRvM0T2FqPbW2S-qLgYXN6rsn52kErlMPd_gw" />
@@ -78,7 +78,7 @@
       </div>
     </span>
     
-    <header class="panel-cover " style="background-image: url('/images/background-cover.jpg')">
+    <header class="panel-cover panel-cover--collapsed" style="background-image: url('/images/background-cover.jpg')">
   <div class="panel-main">
 
     <div class="panel-main__inner panel-inverted">
@@ -146,23 +146,128 @@
 
     <div class="content-wrapper">
         <div class="content-wrapper__inner">
-            <!-- Page Header -->
-<header class="intro-header" style="background-image: url('/images/404-bg.jpg')">
-	<div class="container">
-		<div class="row">
-			<div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-				<div class="site-heading" id="tag-heading">
-					<h1>404</h1>
-					<span class="subheading">你来到了没有知识的荒原 :(</span>
-				</div>
-			</div>
-		</div>
-	</div>
-</header>
+            <article class="post-container post-container--single" itemscope itemtype="http://schema.org/BlogPosting">
+  <header class="post-header">
+    <h1 class="post-title">macOs mysql安装与卸载</h1>
+    <div class="post-meta">
+      <img src="/images/calendar.png" width="20px"/> 
+      <time datetime="2016-04-02 00:00:00 +0800" itemprop="datePublished" class="post-meta__date date">2016-04-02</time>  
+         
+      <span id="busuanzi_container_page_pv"> | 阅读：<span id="busuanzi_value_page_pv"></span>次</span>
+    </p>
+    </div>
+  </header>
 
-<script>
-	document.body.classList.add('page-fullscreen');
-</script>
+  <section class="post">
+    <h3 id="mysql">安装MySql服务</h3>
+
+<h3 id="root-">切换到root 用户</h3>
+<div class="highlighter-rouge"><pre class="highlight"><code>sudo -i
+</code></pre>
+</div>
+
+<h3 id="usrlocal">解压安装包并移动到指定了路径/usr/local</h3>
+<div class="highlighter-rouge"><pre class="highlight"><code>tar -zxvf mysql-5.7.13-osx10.11-x86_64.tar  
+sudo mv mysql-5.7.13-osx10.11-x86_64 /usr/local/mysql  
+</code></pre>
+</div>
+
+<h3 id="section">更改目录的用户和用户组</h3>
+<div class="highlighter-rouge"><pre class="highlight"><code>cd /usr/local   
+sudo chown -R root:wheel mysql
+</code></pre>
+</div>
+
+<h3 id="binmysqld">执行bin目录下的mysqld脚本完成初始化(创建默认配置文件、授权表等)</h3>
+<div class="highlighter-rouge"><pre class="highlight"><code>cd /usr/local/mysql  
+sudo bin/mysqld --initialize --user=mysql   
+</code></pre>
+</div>
+
+<p>执行完成之后会root用户随机分配一个密码,这个密码需要记录好，以备用来登录后修改root密码。<br />
+一般会显示：2017-04-20T06:10:09.073666Z 1 [Note] A temporary password is generated for root@localhost: BxnS&lt;&gt;qpD8E4, BxnS&lt;&gt;qpD8E4这个就是root用户分配的随机密码<br />
+如果之后找不到，尝试到mysql/data 路径下的XXX.err文件内找</p>
+
+<h3 id="section-1">安装完成后常用的一些脚本</h3>
+<div class="highlighter-rouge"><pre class="highlight"><code>cd /usr/local/mysql   
+启动        
+sudo support-files/mysql.server start     
+重启      
+sudo support-files/mysql.server restart      
+停止      
+sudo support-files/mysql.server stop      
+检查 MySQL 运行状态         
+sudo support-files/mysql.server status      
+</code></pre>
+</div>
+
+<h3 id="mysqlbinsupport-filespath">为了方便可以将mysql的bin，和support-files添加到PATH</h3>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>export  PATH=$PATH:/usr/local/mysql/support-files
+export  PATH=$PATH:/usr/local/mysql/bin
+</code></pre>
+</div>
+
+<h3 id="mysql-1">mysql卸载</h3>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>sudo rm /usr/local/mysql
+sudo rm -rf /usr/local/mysql*
+sudo rm -rf /Library/StartupItems/MySQLCOM
+sudo rm -rf /Library/PreferencePanes/My*
+vim /etc/hostconfig  (and removed the line MYSQLCOM=-YES-)
+rm -rf ~/Library/PreferencePanes/My*
+sudo rm -rf /Library/Receipts/mysql*
+sudo rm -rf /Library/Receipts/MySQL*
+sudo rm -rf /var/db/receipts/com.mysql.*
+</code></pre>
+</div>
+
+<p><br />
+转载请注明：<a href="https://peter2116.github.io">FANER ARTIST的博客</a> » <a href="https://peter2116.github.io/2016/07/Facade/">点击阅读原文</a></p>
+
+
+
+  </section>
+</article>
+
+<section>
+       <ul class="pager">
+        
+        <li class="previous">
+            <a href="/2016/04/ClassVersion/" data-toggle="tooltip" data-placement="top" title="class文件版本问题">上一篇：  <span>class文件版本问题</span>
+            </a>
+        </li>
+        
+        
+        <li class="next">
+            <a href="/2016/06/MarkDown/" data-toggle="tooltip" data-placement="top" title="makdown is interesting">下一篇：  <span>makdown is interesting</span>
+            </a>
+        </li>
+        
+    </ul>
+</section>
+
+<section class="post-comments">
+
+  
+    <div class="ds-thread" data-thread-key="/2016/04/MysqlServiceOnMac/" data-title="macOs mysql安装与卸载" data-url="http://peter2116@github.io/2016/04/MysqlServiceOnMac/"></div>
+
+    <script type="text/javascript">
+        var duoshuoQuery = {short_name:"peter"};
+        (function() {
+            var ds = document.createElement('script');
+            ds.type = 'text/javascript';ds.async = true;
+            ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+            ds.charset = 'UTF-8';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ds);
+        })();
+    </script>
+  
+  
+  
+  
+</section>
+
 
             <section class="footer">
     <footer>

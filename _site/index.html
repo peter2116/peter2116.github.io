@@ -151,6 +151,27 @@
   <ol class="post-list">
     
     <li>
+      <h2 class="post-list__post-title post-title"><a href="/2018/03/deadloopcheck/" title="访问 排查java应用中的死循环">排查java应用中的死循环</a></h2>
+      <p class="excerpt">  web应用中出现deadloop问题会导致机器cpu飙升，下面是一个常规的排查思路查找进程pid利用top 或ps -ef  或jps 命令找到吃cpu的pid,我们利用top 可以看到pid为3688的进程导致cpu飙升定位java线程用top -Hp 3688定位到导致吃cpu的线程pid将23694转化为十六进制为0x5c8ejstack获取堆栈信息用jstack命令打印出堆栈信息到文件jstack 3688 &gt; 3688.log定位代码在3688.log中查找pid为0x...&hellip;</p>
+      <div class="post-list__meta">        
+        <time datetime="2018-03-01 00:00:00 +0800" class="post-list__meta--date date">
+          <img src="/images/calendar.png" width="20px" /> 
+          2018-03-01</time> 
+        <div class = "tag-img-icon">
+          <img src="/images/tag-icon.svg" width="20px" /> 
+        </div>
+        <a href="/tags">
+          <div class = "post-list-icon-mate">
+            <span class="post-list__meta--tags-right">java</span>
+          </div>
+          <div class = "post-list-small-mate">
+          <a class="btn-border-small" href=/2018/03/deadloopcheck/>阅读全文 » </a>
+          </div>
+      </div>
+      <hr class="post-list__divider" />
+    </li>
+    
+    <li>
       <h2 class="post-list__post-title post-title"><a href="/2017/07/nfs/" title="访问 nfs 共享文件与挂载">nfs 共享文件与挂载</a></h2>
       <p class="excerpt">机器共享服务器 : 10.110.1.190  客户端服务器 ： 10.110.1.189服务端共享配置打开配置文件写入要共享的文件夹vi /etc/exports写入 /rtweb 10.110.1*(rw,sync,no_root_squash)  /rtweb  ==&gt; 要共享的文件件，客户端就可以挂载该目录以及其子目录10.110.1.* ==&gt; 指定允许访问的ip,也可指定一个具体ip或者*(rw,sync,no_root_squash) ===&gt; 读写权限等重...&hellip;</p>
       <div class="post-list__meta">        
@@ -349,7 +370,7 @@
 
         <div class = "footer_div">  
            <p class="copyright text-muted">
-            Copyright &copy; FANER ARTIST 2017 Theme by <a href="https://peter2116.github.io/">peter2116</a> |
+            Copyright &copy; FANER ARTIST 2018 Theme by <a href="https://peter2116.github.io/">peter2116</a> |
             <iframe
                 style="margin-left: 2px; margin-bottom:-5px;"
                 frameborder="0" scrolling="0" width="91px" height="20px"
