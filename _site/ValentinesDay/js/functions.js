@@ -25,6 +25,18 @@ $(function () {
     setInterval(function () {
         garden.render();
     }, Garden.options.growSpeed);
+
+    // 设置红包图片
+    $("#redBt").click(function () {
+        if($("#redInput").val() == "19931010") {
+            window.document.body.style.background = "url("+"./red.jpg"+") no-repeat center center";
+            window.document.body.style.backgroundAttachment = "fixed";
+            window.document.body.style.color = "#CCCCCC";
+        }
+        else {
+            alert("生日不对哦！")
+        }
+    })
 });
 
 $(window).resize(function() {
